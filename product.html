@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products - CraveCo</title>
+    <link rel="stylesheet" type="text/css" href="product.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Product page specific styles will be added here */
+    </style>
+</head>
+<body>
+    <nav>
+        <!-- Logo on left -->
+        <div class="logo">
+            <img src="img/craveco-removebg-preview.png" alt="CraveCo Logo" width="80" height="80">
+        </div>
+
+        <!-- Links in center -->
+        <div class="nav-links">
+            <ul>
+                <li><a href="craveco.html">Home</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact .html">Contact</a></li>
+                 <li><a href="#cart" class="cart-icon"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- hero section-->
+     <div class="herosec">
+        <div class="hero-slider">
+        <img src="img/wmremove-transformed.jpeg" alt="Hero Image">
+        <img src="img/brownie.jpg" alt="Hero Image">
+        <img src="img/cupcake1.jpg" alt="Hero Image">
+    </div>
+        <h2 style="margin-top: 40px;">Our Delicious Creations</h2>
+         <p>Freshly baked with love, just for you</p>
+     </div>
+    <!-- Category Filter -->
+    <div class="category-filter">
+        <button class="filter-btn active" data-category="all">All Products</button>
+        <button class="filter-btn" data-category="cakes">Cakes</button>
+        <button class="filter-btn" data-category="brownies">Brownies</button>
+        <button class="filter-btn" data-category="tresleches">Tres Leches</button>
+        <button class="filter-btn" data-category="cupcakes">Cupcakes</button>
+        <button class="filter-btn" data-category="breads">Breads & Loafs</button>
+        <button class="filter-btn" data-category="pastries">Pastries</button>
+        <button class="filter-btn" data-category="tarts">Tarts</button>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-container">
+        <div class="product-grid">
+            <!-- Product 1: Cakes -->
+            <div class="product-card" data-category="cakes">
+                <div class="product-image">
+                    <img src="img/cakes.jpg" alt="Chocolate Cake">
+                    <div class="product-overlay">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Chocolate Fudge Cake</h3>
+                    <p>Rich, moist chocolate cake with creamy frosting</p>
+                    <div class="product-price">₹599</div>
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus">-</button>
+                            <span class="quantity">1</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2: Brownies -->
+            <div class="product-card" data-category="brownies">
+                <div class="product-image">
+                    <img src="img/brown-bronie2.jpg" alt="Fudgy Brownie">
+                    <div class="product-overlay">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Double Fudge Brownie</h3>
+                    <p>Decadent, rich brownies with chocolate chunks</p>
+                    <div class="product-price">₹299</div>
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus">-</button>
+                            <span class="quantity">1</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3: Tres Leches -->
+            <div class="product-card" data-category="tresleches"  id="tresles">
+                <div class="product-image">
+                    <img src="img/tresleches.jpg" alt="Tres Leches Cake">
+                    <div class="product-overlay">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Classic Tres Leches</h3>
+                    <p>Sponge cake soaked in three kinds of milk</p>
+                    <div class="product-price">₹649</div>
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus">-</button>
+                            <span class="quantity">1</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4: Cupcakes -->
+            <div class="product-card" data-category="cupcakes">
+                <div class="product-image">
+                    <img src="img/cupcakes.jpg" alt="Assorted Cupcakes">
+                    <div class="product-overlay">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Assorted Cupcakes (6pc)</h3>
+                    <p>Variety of flavors with buttercream frosting</p>
+                    <div class="product-price">₹449</div>
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus">-</button>
+                            <span class="quantity">1</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5: Breads -->
+            <div class="product-card" data-category="breads">
+                <div class="product-image">
+                    <img src="img/breads.jpg" alt="Artisan Bread">
+                    <div class="product-overlay">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Artisan Sourdough Bread</h3>
+                    <p>Freshly baked sourdough with crispy crust</p>
+                    <div class="product-price">₹199</div>
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus">-</button>
+                            <span class="quantity">1</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6: Pastries -->
+            <div class="product-card" data-category="pastries">
+                <div class="product-image">
+                    <img src="img/pastries.jpg" alt="French Pastries">
+                    <div class="product-overlay">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>French Pastry Assortment</h3>
+                    <p>Eclairs, palmiers, and other delicate pastries</p>
+                    <div class="product-price">₹399</div>
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus">-</button>
+                            <span class="quantity">1</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 7: Tarts -->
+            <div class="product-card" data-category="tarts">
+                <div class="product-image">
+                    <img src="img/tarts.jpg" alt="Fruit Tart">
+                    <div class="product-overlay">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Mixed Berry Tart</h3>
+                    <p>Buttery crust with vanilla custard and fresh berries</p>
+                    <div class="product-price">₹349</div>
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus">-</button>
+                            <span class="quantity">1</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 8: Signature Item -->
+            <div class="product-card featured" data-category="cakes">
+                <div class="product-badge">Signature</div>
+                <div class="product-image">
+                    <img src="img/koreanbun.jpg" alt="Korean Cream Bun">
+                    <div class="product-overlay">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Korean Cream Cheese Bun</h3>
+                    <p>Our signature soft bun with creamy filling</p>
+                    <div class="product-price">₹149</div>
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus">-</button>
+                            <span class="quantity">1</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="modal" id="quickViewModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-product-details">
+                <div class="modal-product-image">
+                    <img src="" alt="Product Image" id="modalImage">
+                </div>
+                <div class="modal-product-info">
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalDescription"></p>
+                    <div class="modal-price" id="modalPrice"></div>
+                    <div class="modal-actions">
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus">-</button>
+                            <span class="quantity">1</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart">&times;</button>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="cart-total">
+            <p>Total: <span class="total-amount">₹0</span></p>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Footer -->
+    <footer>
+        <!-- Same footer as your main page -->
+         <footer>
+        <div class="footer-container">
+            <!-- Left: Logo & Tagline -->
+            <div class="footer-logo">
+                <img src="img/craveco-removebg-preview.png" alt="CraveCo Logo" width="100">
+                <p>Baking Happiness, One Bite at a Time 💛</p>
+            </div>
+
+            <!-- Middle: Quick Links -->
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="craveco.html">Home</a></li>
+                    <li><a href="#product">Products</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Extra Policies -->
+            <div class="footer-policies">
+                <h3>Our Policies</h3>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="refund.html">Refund Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="shipping.html">Shipping Policy</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- Right: Contact Info -->
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Sweet Street, Chennai, India</p>
+                <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope"></i> support@craveco.com</p>
+            </div>
+
+            <!-- Social Media -->
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom: Copy -->
+        <div class="footer-bottom">
+            <p>© 2025 CraveCo. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms</a></p>
+        </div>
+    </footer>
+    </footer>
+
+    <script>
+        // JavaScript for product page functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Category filtering
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    const category = button.getAttribute('data-category');
+                    
+                    productCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+                
+            });
+            
+            // Quantity selectors
+            const quantitySelectors = document.querySelectorAll('.quantity-selector');
+            
+            quantitySelectors.forEach(selector => {
+                const minusBtn = selector.querySelector('.minus');
+                const plusBtn = selector.querySelector('.plus');
+                const quantityDisplay = selector.querySelector('.quantity');
+                
+                let quantity = 1;
+                
+                minusBtn.addEventListener('click', () => {
+                    if (quantity > 1) {
+                        quantity--;
+                        quantityDisplay.textContent = quantity;
+                    }
+                });
+                
+                plusBtn.addEventListener('click', () => {
+                    quantity++;
+                    quantityDisplay.textContent = quantity;
+                });
+            });
+            
+            // Quick view modal
+            const quickViewButtons = document.querySelectorAll('.quick-view');
+            const modal = document.getElementById('quickViewModal');
+            const closeModal = document.querySelector('.close-modal');
+            
+            quickViewButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const productCard = button.closest('.product-card');
+                    const productImage = productCard.querySelector('img').src;
+                    const productTitle = productCard.querySelector('h3').textContent;
+                    const productDescription = productCard.querySelector('p').textContent;
+                    const productPrice = productCard.querySelector('.product-price').textContent;
+                    
+                    document.getElementById('modalImage').src = productImage;
+                    document.getElementById('modalTitle').textContent = productTitle;
+                    document.getElementById('modalDescription').textContent = productDescription;
+                    document.getElementById('modalPrice').textContent = productPrice;
+                    
+                    modal.style.display = 'block';
+                });
+            });
+            
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+            
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Cart functionality
+           // Cart functionality with localStorage persistence
+const cartIcon = document.querySelector('.cart-icon');
+const cartSidebar = document.getElementById('cartSidebar');
+const cartOverlay = document.getElementById('cartOverlay');
+const closeCart = document.querySelector('.close-cart');
+const addToCartButtons = document.querySelectorAll('.add-to-cart');
+const cartItemsContainer = document.querySelector('.cart-items');
+const totalAmount = document.querySelector('.total-amount');
+const cartCount = document.querySelector('.cart-count');
+
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+updateCart();
+
+cartIcon.addEventListener('click', (e) => {
+    e.preventDefault();
+    cartSidebar.classList.add('active');
+    cartOverlay.classList.add('active');
+});
+
+closeCart.addEventListener('click', () => {
+    cartSidebar.classList.remove('active');
+    cartOverlay.classList.remove('active');
+});
+
+cartOverlay.addEventListener('click', () => {
+    cartSidebar.classList.remove('active');
+    cartOverlay.classList.remove('active');
+});
+
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const productCard = button.closest('.product-card');
+        const productImage = productCard.querySelector('img').src;
+        const productTitle = productCard.querySelector('h3').textContent;
+        const productPrice = parseFloat(productCard.querySelector('.product-price').textContent.replace('₹', ''));
+        const quantity = parseInt(productCard.querySelector('.quantity').textContent);
+
+        const existingProductIndex = cart.findIndex(item => item.title === productTitle);
+        if (existingProductIndex !== -1) {
+            cart[existingProductIndex].quantity += quantity;
+        } else {
+            cart.push({ image: productImage, title: productTitle, price: productPrice, quantity });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart)); // persist
+        updateCart();
+
+        // Quick feedback
+        button.textContent = 'Added!';
+        setTimeout(() => button.textContent = 'Add to Cart', 1500);
+    });
+});
+
+function updateCart() {
+    cartItemsContainer.innerHTML = '';
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.title}">
+            <div class="cart-item-details">
+                <h4>${item.title}</h4>
+                <p>₹${item.price} x ${item.quantity}</p>
+            </div>
+            <button class="remove-item" data-index="${index}">&times;</button>
+        `;
+        cartItemsContainer.appendChild(cartItem);
+    });
+
+    totalAmount.textContent = `₹${total}`;
+
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = totalItems;
+
+    // Add “bump” animation
+    cartCount.classList.add('bump');
+    setTimeout(() => cartCount.classList.remove('bump'), 300);
+
+    // Remove item functionality
+    const removeButtons = document.querySelectorAll('.remove-item');
+    removeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const index = parseInt(button.dataset.index);
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+        });
+    });
+}
+
+// Checkout
+checkoutBtn.addEventListener('click', () => {
+    if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+    }
+
+    // Save cart to localStorage for checkout page
+    localStorage.setItem('cartItems', JSON.stringify(cart));
+
+    // Redirect to checkout page
+    window.location.href = 'checkout.html';
+});
+
+            
+            // Checkout button
+            const checkoutBtn = document.querySelector('.checkout-btn');
+            checkoutBtn.addEventListener('click', () => {
+                if (cart.length === 0) {
+                    alert('Your cart is empty!');
+                    return;
+                }
+                
+                alert(`Thank you for your order! Total: ₹${total}\nWe'll contact you shortly for delivery details.`);
+                cart = [];
+                updateCart();
+                cartSidebar.classList.remove('active');
+                cartOverlay.classList.remove('active');
+            });
+            
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get("category");
+
+    if (category) {
+        // Hide all product-cards
+        document.querySelectorAll(".product-card").forEach(card => {
+            if (card.dataset.category === category) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+
+        // Highlight correct filter button
+        document.querySelectorAll(".filter-btn").forEach(btn => {
+            btn.classList.remove("active");
+        });
+        const activeBtn = document.querySelector(`.filter-btn[data-category="${category}"]`);
+        if (activeBtn) activeBtn.classList.add("active");
+    }
+});
+
+    </script>
+</body>
+</html>

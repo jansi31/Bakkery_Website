@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout - CraveCo</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+    body { font-family: Arial, sans-serif; margin:0; background:#f8f8f8; }
+    .checkout-container { max-width:600px; margin:50px auto; background:white; padding:30px; border-radius:15px; box-shadow:0 10px 30px rgba(0,0,0,0.1);}
+    h2 { text-align:center; margin-bottom:30px; color:#e85d04; }
+    .form-group { margin-bottom:20px; }
+    .form-group label { display:block; margin-bottom:5px; font-weight:bold; }
+    .form-group input, .form-group textarea { width:100%; padding:10px; border:1px solid #ddd; border-radius:8px; }
+    .place-order-btn { background:#e85d04; color:white; border:none; padding:12px; width:100%; border-radius:30px; font-size:1rem; font-weight:bold; cursor:pointer; transition:0.3s; }
+    .place-order-btn:hover { background:#ff6b00; }
+    .order-success { display:none; text-align:center; margin-top:30px; color:green; font-size:1.2rem; animation:fadeIn 1s forwards; }
+    .order-success i { font-size:50px; margin-bottom:10px; display:block; }
+    @keyframes fadeIn { 0% {opacity:0; transform:scale(0.5);} 100% {opacity:1; transform:scale(1);} }
+</style>
+</head>
+<body>
+<div class="checkout-container">
+    <h2>Checkout</h2>
+    <div class="cart-summary">
+        <h3>Order Summary</h3>
+        <ul id="cartSummary"></ul>
+    </div>
+
+    <h3>Delivery Details</h3>
+    <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" required>
+    </div>
+    <div class="form-group">
+        <label for="address">Address</label>
+        <textarea id="address" rows="3" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" required>
+    </div>
+
+    <button class="place-order-btn">Place Order</button>
+
+    <div class="order-success" id="orderSuccess">
+        <i class="fas fa-check-circle"></i>
+        <span>Order Placed Successfully!</span>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const cartSummary = document.getElementById('cartSummary');
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    let total = 0;
+
+    cartItems.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.title} x ${item.quantity} - ₹${item.price * item.quantity}`;
+        cartSummary.appendChild(li);
+        total += item.price * item.quantity;
+    });
+
+    const liTotal = document.createElement('li');
+    liTotal.innerHTML = `<strong>Total: ₹${total}</strong>`;
+    cartSummary.appendChild(liTotal);
+
+    const placeOrderBtn = document.querySelector('.place-order-btn');
+    const orderSuccess = document.getElementById('orderSuccess');
+
+    placeOrderBtn.addEventListener('click', () => {
+        const name = document.getElementById('name').value;
+        const address = document.getElementById('address').value;
+        const phone = document.getElementById('phone').value;
+
+        if (!name || !address || !phone) {
+            alert('Please fill all details!');
+            return;
+        }
+
+        // Clear cart
+        localStorage.removeItem('cartItems');
+
+        // Show success message with green tick
+        orderSuccess.style.display = 'block';
+
+        // Disable button
+        placeOrderBtn.disabled = true;
+        placeOrderBtn.style.cursor = 'not-allowed';
+        placeOrderBtn.textContent = 'Order Placed';
+    });
+});
+</script>
+</body>
+</html>
