@@ -3,95 +3,341 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkout - CraveCo</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<title>Checkout</title>
 <style>
-    body { font-family: Arial, sans-serif; margin:0; background:#f8f8f8; }
-    .checkout-container { max-width:600px; margin:50px auto; background:white; padding:30px; border-radius:15px; box-shadow:0 10px 30px rgba(0,0,0,0.1);}
-    h2 { text-align:center; margin-bottom:30px; color:#e85d04; }
-    .form-group { margin-bottom:20px; }
-    .form-group label { display:block; margin-bottom:5px; font-weight:bold; }
-    .form-group input, .form-group textarea { width:100%; padding:10px; border:1px solid #ddd; border-radius:8px; }
-    .place-order-btn { background:#e85d04; color:white; border:none; padding:12px; width:100%; border-radius:30px; font-size:1rem; font-weight:bold; cursor:pointer; transition:0.3s; }
-    .place-order-btn:hover { background:#ff6b00; }
-    .order-success { display:none; text-align:center; margin-top:30px; color:green; font-size:1.2rem; animation:fadeIn 1s forwards; }
-    .order-success i { font-size:50px; margin-bottom:10px; display:block; }
-    @keyframes fadeIn { 0% {opacity:0; transform:scale(0.5);} 100% {opacity:1; transform:scale(1);} }
+  body {
+    font-family: "Poppins", sans-serif;
+    background: #f9f7f3;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px;
+    margin: 0;
+  }
+
+  .container {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    padding: 30px;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #1a2a4c;
+  }
+
+  /* Cart Items */
+  .checkout-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .checkout-item img {
+    width: 50px;
+    border-radius: 8px;
+  }
+
+  /* Summary */
+  .summary {
+    margin: 20px 0;
+    background: #f9f7f3;
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .summary div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+
+  .summary .total {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1a2a4c;
+  }
+
+  /* Form */
+  h2 {
+    margin: 25px 0 15px;
+    font-size: 20px;
+    color: #2c3e50;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 8px;
+  }
+
+  .form-group {
+    position: relative;
+    margin-bottom: 18px;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 14px 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s;
+    background: #fff;
+  }
+
+  input:focus, textarea:focus {
+    border-color:  #e9a105;
+  }
+
+  label {
+    position: absolute;
+    top: 14px;
+    left: 12px;
+    color: #999;
+    font-size: 14px;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    background: #fff;
+    padding: 0 4px;
+  }
+
+  input:focus + label,
+  input:not(:placeholder-shown) + label,
+  textarea:focus + label,
+  textarea:not(:placeholder-shown) + label {
+    top: -8px;
+    left: 8px;
+    font-size: 12px;
+    color: #e9a105;
+  }
+
+  textarea { resize: vertical; min-height: 90px; }
+
+  /* Button */
+  button {
+    width: 100%;
+    background: rgb(235, 155, 8);
+    color: #fff;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.2s, background 0.3s;
+    margin-top: 15px;
+  }
+
+  button:hover {
+    transform: translateY(-2px);
+    background:  rgb(255, 166, 0);
+  }
+
+  /* GIF Success Overlay */
+  #order-success {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 999;
+  }
+
+  .overlay-box {
+    position: relative;
+    text-align: center;
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 350px;
+  }
+
+  #close-overlay {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #e74c3c; 
+    transition: transform 0.2s;
+  }
+
+  #close-overlay:hover { transform: scale(1.2); }
+
+  #gift-gif {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 20px;
+  }
+
+  #success-text {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ff8c42, #ffcb6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+  }
+
+  #order-id {
+    font-size: 16px;
+    color: #34495e; 
+    margin-bottom: 20px;
+  }
+
+  #continue-btn {
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #e9a105, #ffcf33);
+    color: #fff;
+    transition: transform 0.2s, box-shadow 0.3s;
+  }
+
+  #continue-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(233,161,5,0.6);
+  }
 </style>
 </head>
 <body>
-<div class="checkout-container">
-    <h2>Checkout</h2>
-    <div class="cart-summary">
-        <h3>Order Summary</h3>
-        <ul id="cartSummary"></ul>
-    </div>
+<div class="container">
+  <h1>Checkout</h1>
 
-    <h3>Delivery Details</h3>
-    <div class="form-group">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" required>
-    </div>
-    <div class="form-group">
-        <label for="address">Address</label>
-        <textarea id="address" rows="3" required></textarea>
-    </div>
-    <div class="form-group">
-        <label for="phone">Phone</label>
-        <input type="text" id="phone" required>
-    </div>
+  <!-- Cart Items -->
+  <div id="cart-items"></div>
 
-    <button class="place-order-btn">Place Order</button>
+  <!-- Summary -->
+  <div class="summary">
+    <div><span>Subtotal:</span> <span>₹<span id="subtotal">0</span></span></div>
+    <div><span>Discount:</span> <span>- ₹<span id="discount">50</span></span></div>
+    <div><span>Delivery:</span> <span>₹<span id="delivery">40</span></span></div>
+    <div class="total"><span>Total:</span> <span>₹<span id="total-amount">0</span></span></div>
+  </div>
 
-    <div class="order-success" id="orderSuccess">
-        <i class="fas fa-check-circle"></i>
-        <span>Order Placed Successfully!</span>
+  <!-- Form -->
+  <h2>Your Details</h2>
+  <form id="checkout-form">
+    <div class="form-group">
+      <input type="text" id="name" placeholder=" " required>
+      <label for="name">Name</label>
     </div>
+    <div class="form-group">
+      <input type="email" id="email" placeholder=" " required>
+      <label for="email">Email</label>
+    </div>
+    <div class="form-group">
+      <textarea id="address" placeholder=" " rows="3" required></textarea>
+      <label for="address">Address</label>
+    </div>
+    <button type="submit">Place Order</button>
+  </form>
+</div>
+
+<!-- GIF Overlay -->
+<div id="order-success">
+  <div class="overlay-box">
+    <span id="close-overlay">&#10005;</span>
+    <img id="gift-gif" src="img/Kalyani-Kanwar-Via-KLICKPIN-CF-unscreen.gif" alt="Gift Box Burst"/>
+    <h2 id="success-text">Order Placed Successfully!</h2>
+    <div id="order-id"></div>
+    <button id="continue-btn">Continue Shopping</button>
+  </div>
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const cartSummary = document.getElementById('cartSummary');
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+document.addEventListener("DOMContentLoaded", () => {
+  const cartItemsContainer = document.getElementById("cart-items");
+  const subtotalElement = document.getElementById("subtotal");
+  const discountElement = document.getElementById("discount");
+  const deliveryElement = document.getElementById("delivery");
+  const totalAmountElement = document.getElementById("total-amount");
+  const checkoutForm = document.getElementById("checkout-form");
+  const successMessage = document.getElementById("order-success");
+  const orderIdEl = document.getElementById("order-id");
+  const continueBtn = document.getElementById("continue-btn");
+  const closeOverlay = document.getElementById("close-overlay");
 
-    let total = 0;
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    cartItems.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = `${item.title} x ${item.quantity} - ₹${item.price * item.quantity}`;
-        cartSummary.appendChild(li);
-        total += item.price * item.quantity;
+  function renderCart() {
+    cartItemsContainer.innerHTML = "";
+    let subtotal = 0;
+    cart.forEach(item => {
+      const itemElement = document.createElement("div");
+      itemElement.classList.add("checkout-item");
+      itemElement.innerHTML = `
+        <img src="${item.image}" alt="${item.title}" />
+        <span>${item.title} (x${item.quantity})</span>
+        <span>₹${item.price * item.quantity}</span>
+      `;
+      cartItemsContainer.appendChild(itemElement);
+      subtotal += item.price * item.quantity;
     });
 
-    const liTotal = document.createElement('li');
-    liTotal.innerHTML = `<strong>Total: ₹${total}</strong>`;
-    cartSummary.appendChild(liTotal);
+    let discount = 50;
+    let delivery = 40;
+    let total = subtotal - discount + delivery;
 
-    const placeOrderBtn = document.querySelector('.place-order-btn');
-    const orderSuccess = document.getElementById('orderSuccess');
+    subtotalElement.textContent = subtotal;
+    discountElement.textContent = discount;
+    deliveryElement.textContent = delivery;
+    totalAmountElement.textContent = total;
+  }
 
-    placeOrderBtn.addEventListener('click', () => {
-        const name = document.getElementById('name').value;
-        const address = document.getElementById('address').value;
-        const phone = document.getElementById('phone').value;
+  renderCart();
 
-        if (!name || !address || !phone) {
-            alert('Please fill all details!');
-            return;
-        }
+  checkoutForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-        // Clear cart
-        localStorage.removeItem('cartItems');
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const address = document.getElementById("address").value;
+    const subtotal = parseInt(subtotalElement.textContent);
+    const discount = parseInt(discountElement.textContent);
+    const delivery = parseInt(deliveryElement.textContent);
+    const total = subtotal - discount + delivery;
 
-        // Show success message with green tick
-        orderSuccess.style.display = 'block';
+    try {
+      const response = await fetch("http://localhost:5000/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, address, cart, total })
+      });
 
-        // Disable button
-        placeOrderBtn.disabled = true;
-        placeOrderBtn.style.cursor = 'not-allowed';
-        placeOrderBtn.textContent = 'Order Placed';
-    });
+      const data = await response.json();
+      if (data.success) {
+        orderIdEl.textContent = `Your Order ID: ${data.order.order_id}`;
+        successMessage.style.display = "flex";
+        localStorage.removeItem("cart");
+      } else {
+        alert("Order failed. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Server error. Please try again later.");
+    }
+  });
+
+  closeOverlay.addEventListener("click", () => { successMessage.style.display = "none"; });
+  continueBtn.addEventListener("click", () => { successMessage.style.display = "none"; });
 });
 </script>
+
 </body>
 </html>

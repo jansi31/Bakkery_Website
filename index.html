@@ -1,104 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Social Media Cards</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-  body {
-    
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CraveCo</title>
+    <link rel="stylesheet" type="text/css" href="css/craveco.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js"></script>
 
-  .container {
-    display: flex; gap: 30px; flex-wrap: wrap; padding: 20px;
-     margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    display: flex; justify-content: center; align-items: center; min-height: 100vh;
-  }
-
-  .social-card {
-    width: 320px; height: 380px; perspective: 1000px; cursor: pointer;
-  }
-
-  .social-card-inner {
-    width: 100%; height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    position: relative;
-  }
-
-  .social-card:hover .social-card-inner {
-    transform: rotateY(180deg);
-  }
-
-  .social-card-front, .social-card-back {
-    position: absolute; width: 100%; height: 100%;
-    border-radius: 15px;
-    backface-visibility: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-    overflow: hidden;
-  }
-
-  .social-card-front {
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    padding: 20px; background: linear-gradient(145deg, #833ab4, #fd1d1d, #fcb045);
-    color: white;
-  }
-
-  .social-card-back {
-    background: linear-gradient(145deg, #1a1a1a, #333);
-    transform: rotateY(180deg); display: flex;
-    flex-direction: column; align-items: center; padding: 20px; color: white;
-  }
-
-  .logo { font-size: 4rem; margin-bottom: 15px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-  .social-name { font-size: 1.5rem; font-weight: bold; margin-bottom: 8px; }
-  .social-username { font-size: 1rem; margin-bottom: 15px; opacity: 0.9; }
-
-  .btn {
-    background: white; color: #333; border: none; padding: 10px 20px;
-    border-radius: 50px; font-size: 0.95rem; cursor: pointer; font-weight: bold;
-    transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  }
-  .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
-
-  .video-container {
-    width: 100%; height: 200px; border-radius: 10px; overflow: hidden; margin-bottom: 15px;
-    position: relative;
-  }
-
-  .video-container video {
-    width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;
-  }
-
-  .social-card:hover .video-container video { transform: scale(1.05); }
-
-  .video-overlay {
-    position: absolute; bottom: 10px; right: 10px;
-    display: flex; flex-direction: column; gap: 10px;
-  }
-
-  .video-overlay button {
-    background: rgba(0,0,0,0.6); border: none; color: #fff;
-    padding: 8px 10px; border-radius: 50px; cursor: pointer;
-    display: flex; flex-direction: column; align-items: center; gap: 5px;
-    font-size: 0.9rem;
-  }
-
-  .social-stats { display: flex; justify-content: space-around; width: 100%; margin: 10px 0; }
-  .stat { text-align: center; }
-  .stat-value { font-size: 1.2rem; font-weight: bold; }
-  .stat-label { font-size: 0.8rem; opacity: 0.7; }
-  .description { font-size: 0.9rem; line-height: 1.4; margin-bottom: 10px; opacity: 0.9; }
-
-  @media(max-width:768px) { .container { flex-direction: column; align-items: center; } }
-
-</style>
 </head>
 <body>
+    <nav>
+        <!-- Logo on left -->
+        <div class="logo">
+            <img src="img/craveco-removebg-preview.png" alt="CraveCo Logo" width="80" height="80">
+        </div>
 
+        <!-- Links in center -->
+        <div class="nav-links">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact .html">Contact</a></li>
+                 <li><a href="#cart" class="cart-icon"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- hero section-->
+     <div class="herosec">
+        <div class="hero-slider">
+        <img src="img/wmremove-transformed.jpeg" alt="Hero Image">
+        <img src="img/brownie.jpg" alt="Hero Image">
+        <img src="img/cupcake1.jpg" alt="Hero Image">
+    </div>
+        <h2 style="margin-top: 40px;">Bite into Happiness...</h2>
+        <a href="product.html"><button>Get Started</button></a>
+     </div>
+     <div class="content">
+     <img src="img/giphy-brownie.gif" 
+         alt="Delicious Brownie" width="300" height="300">
+     <div class="cont-content">
+        <h2><i>Just for you</i></h2>
+        <p>    <i>Our brownies are baked fresh every day with the finest ingredients.</i><br><br>
+    <i>No preservatives, no shortcuts – only homemade goodness.</i><br><br>
+    <i>Because you deserve a treat that’s as special as you are. 💛</i><br></p>
+     </div>
+     <div class="brown">
+         <img src="img/brown-bronie1.jpg" width="200px" height="200px">
+         <img src="img/brown-bronie2.jpg" width="200px" height="200px">
+     </div>
+    </div>
+    <div class="content">
+        <div class="brown">
+         <img src="img/cup cakes.jpg" width="200px" height="200px">
+         <img src="img/cupcake2.jpg" width="200px" height="200px">
+     </div>
+        <div class="cont-content">
+  <h2><i>Just for you</i></h2>
+  <p>
+    <i>Our cupcakes are crafted to perfection, soft and fluffy with every bite.</i><br><br>
+<i>Topped with creamy frosting and a sprinkle of love. 🧁</i><br><br>
+<i>A little cupcake is all it takes to brighten your day. ✨</i><br>
+
+  </p>
+</div>
+
+     <img src="img/cupgif.gif" width="300px" height="300px">
+    </div>
+    <!--what we offer -->
+    <div class="offer" id="product">
+        <h1 style="text-align: center;">What we Offer</h1>
+        <div class="off">
+        <div class="off-offer"><a href="product.html?category=cakes ">
+        <img src="img/cakes.jpg" height="300px" width="300px"></a>
+        <h2>Cakes</h2>
+        </div>
+         <div class="off-offer"><a href="product.html?category=brownies  ">
+        <img src="img/brown-bronie2.jpg" height="300px" width="300px"></a>
+        <h2>Brownies</h2>
+        </div>
+         <div class="off-offer"><a href="product.html?category=tresleches ">
+           <img src="img/tresleches.jpg" height="300px" width="300px">
+         </a>
+       
+        <h2>Tresleches</h2>
+        </div>
+         <div class="off-offer"><a href="product.html?category=cupcakes">
+        <img src="img/cup cakes.jpg" height="300px" width="300px"></a>
+        <h2>Cup Cakes</h2>
+        </div>
+         <div class="off-offer"><a href="product.html?category=breads">
+        <img src="img/breads.jpg" height="300px" width="300px"></a>
+        <h2>Breads and loafs</h2>
+        </div>
+        <div class="off-offer"><a href="product.html?category=pastries ">
+        <img src="img/pastries.jpg" height="300px" width="300px"></a>
+        <h2>Pastries</h2>
+        </div>
+        <div class="off-offer"><a href="product.html?category=tarts ">
+        <img src="img/tarts.jpg" height="300px" width="300px"></a>
+        <h2>Tarts</h2>
+        </div>
+
+        </div>
+    </div>
+    <!-- Line before reviews -->
+<!-- Scrolling offers line -->
+<div class="offer-banner">
+  <div class="offer-track">
+    <span> Cakes 50% Off!</span>
+    <span> Cupcakes Buy 1 Get 1!</span>
+    <span> Brownies Special Deal!</span>
+    <span> Fresh Breads Daily!</span>
+    <span> Pastries Delight!</span>
+  </div>
+</div>
+<a href="https://www.instagram.com/dummyprofile/" target="_blank" class="bottom-left instagram">
+    <i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://wa.me/919876543210" target="_blank" class="bottom-right whatsapp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+<h2><center>Our Signature</center></h2>
+<div class="Signature">
+    <div class="signature-overlay"></div>
+
+  <!-- Left Image -->
+  <div class="signature-img left">
+    <img src="img/koreanbun.jpg" alt="Brownie">
+  </div>
+
+  <!-- Center Content -->
+  <div class="signature-content">
+    <h2>Our Signature Delight ✨</h2>
+    <p>Experience the melt-in-your-mouth goodness of our signature creation, baked to perfection with love. 💛</p>
+    <a href="product.html"><button class="try-btn">Try This</button></a>
+  </div>
+
+  <!-- Right Image -->
+  <div class="signature-img right">
+    <img src="img/tiramisu.jpg" alt="Cupcake">
+  </div>
+</div>
+
+
+
+
+    <section class="reviews">
+    <h2>What Our Customers Say</h2>
+    <div class="review-container">
+
+        <div class="review-card">
+            <p>"The brownies from CraveCo are simply out of this world! Soft, fudgy, and full of flavor. Highly recommend!"</p>
+            <div class="stars">
+                ★★★★★
+            </div> 
+            <h3>- Priya S.</h3>
+        </div>
+
+        <div class="review-card">
+            <p>"I ordered a birthday cake, and it was not only beautiful but also delicious. Everyone loved it!"</p>
+            <div class="stars">
+                ★★★★☆
+            </div>
+            <h3>- Arjun M.</h3>
+        </div>
+
+        <div class="review-card">
+            <p>"The cookies taste just like homemade, warm and buttery. CraveCo has become my go-to for desserts."</p>
+            <div class="stars">
+                ★★★★★
+            </div>
+            <h3>- Sneha R.</h3>
+        </div>
+
+    </div>
+</section>
+
+    <!-- Social Media Section -->
 <div class="container">
   <!-- Instagram Card -->
   <div class="social-card">
@@ -106,7 +187,7 @@
       <div class="social-card-front">
         <div class="logo"><i class="fab fa-instagram"></i></div>
         <div class="social-name">Instagram</div>
-        <div class="social-username">@yourusername</div>
+        <div class="social-username">@CraveCo</div>
         <button class="btn">Follow Me</button>
       </div>
       <div class="social-card-back">
@@ -126,7 +207,8 @@
           <div class="stat"><div class="stat-value">327</div><div class="stat-label">Following</div></div>
         </div>
         <p class="description">Follow me for daily lifestyle & photography content!</p>
-        <button class="btn">View Profile</button>
+       <a href="https://www.instagram.com/yourprofile/" target="_blank" class="btn">View Channel</a>
+
       </div>
     </div>
   </div>
@@ -137,8 +219,8 @@
       <div class="social-card-front" style="background: linear-gradient(145deg, #ff0000, #ff5e00);">
         <div class="logo"><i class="fab fa-youtube"></i></div>
         <div class="social-name">YouTube</div>
-        <div class="social-username">@yourchannel</div>
-        <button class="btn">Subscribe</button>
+        <div class="social-username">@CraveCo</div>
+        <a href="https://www.youtube.com/@yourchannel"><button class="btn">Subscribe</button></a>
       </div>
       <div class="social-card-back">
         <div class="video-container">
@@ -157,38 +239,281 @@
           <div class="stat"><div class="stat-value">2.1M</div><div class="stat-label">Views</div></div>
         </div>
         <p class="description">Subscribe for tech & creative content weekly!</p>
-        <button class="btn">View Channel</button>
+        <a href="https://www.youtube.com/@yourchannel" target="_blank" class="btn">View Channel</a>
+
       </div>
     </div>
   </div>
 </div>
+<!-- Floating Social Icons -->
+<a href="https://www.instagram.com/dummyprofile/" target="_blank" class="social-float instagram">
+    <i class="fab fa-instagram"></i>
+</a>
 
+<a href="https://wa.me/919876543210" target="_blank" class="social-float whatsapp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+<div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart">&times;</button>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="cart-total">
+            <p>Total: <span class="total-amount">₹0</span></p>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+
+<!-- Footer Section -->
+<!-- Footer Section -->
+<footer>
+        <div class="footer-container">
+            <!-- Left: Logo & Tagline -->
+            <div class="footer-logo">
+                <img src="img/craveco-removebg-preview.png" alt="CraveCo Logo" width="100">
+                <p>Baking Happiness, One Bite at a Time 💛</p>
+            </div>
+
+            <!-- Middle: Quick Links -->
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="product.html">Products</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact .html">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Extra Policies -->
+            <div class="footer-policies">
+                <h3>Our Policies</h3>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="refund.html">Refund Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="shipping.html">Shipping Policy</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- Right: Contact Info -->
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Sweet Street, Chennai, India</p>
+                <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope"></i> support@craveco.com</p>
+            </div>
+
+            <!-- Social Media -->
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/YourPage" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/YourProfile" class="instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/YourProfile" class="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/@YourChannel" class="youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/in/YourProfile" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom: Copy -->
+        <div class="footer-bottom">
+            <p>© 2025 CraveCo. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms</a></p>
+        </div>
+    </footer>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const cards = document.querySelectorAll('.social-card');
+window.addEventListener("scroll", () => {
+  const signatureSection = document.querySelector(".Signature");
+  const leftImg = document.querySelector(".signature-img.left");
+  const rightImg = document.querySelector(".signature-img.right");
 
-  cards.forEach(card => {
-    const video = card.querySelector('video');
+  // Section position
+  let rect = signatureSection.getBoundingClientRect();
 
-    card.addEventListener('mouseenter', () => {
-      video.play().catch(e => console.log(e)); // Autoplay safety
-      setTimeout(() => { video.pause(); video.currentTime = 0; }, 5000);
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    // Progress from 0 → 1 based on scroll
+    let progress = 1 - rect.top / window.innerHeight;
+
+    // Get half screen width
+    let halfWidth = window.innerWidth / 2;
+
+    // At center (progress ~0.5) images overlap
+    // Before 0.5 → move inward, after 0.5 → move outward
+    let distance = (progress - 0.5) * 2 * (halfWidth - leftImg.offsetWidth);
+
+    // Animate
+    leftImg.style.transform = `translateY(-50%) translateX(${distance}px)`;
+    rightImg.style.transform = `translateY(-50%) translateX(${-distance}px)`;
+  }
+});
+// Show cart count on all pages
+document.addEventListener('DOMContentLoaded', () => {
+    const cartCount = document.querySelector('.cart-count');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    if (cartCount) cartCount.textContent = totalItems;
+});
+
+const cartIcon = document.querySelector('.cart-icon');
+    const cartSidebar = document.getElementById('cartSidebar');
+    const cartOverlay = document.getElementById('cartOverlay');
+    const closeCart = document.querySelector('.close-cart');
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const cartItemsContainer = document.querySelector('.cart-items');
+    const totalAmount = document.querySelector('.total-amount');
+    const cartCount = document.querySelector('.cart-count');
+    const checkoutBtn = document.querySelector('.checkout-btn');
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    updateCart();
+
+    // Open cart sidebar
+    cartIcon.addEventListener('click', (e) => {
+        e.preventDefault();
+        cartSidebar.classList.add('active');
+        cartOverlay.classList.add('active');
     });
 
-    card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
-  });
-
-  const buttons = document.querySelectorAll('.btn');
-  buttons.forEach(button => {
-    button.addEventListener('click', function(e) {
-      e.stopPropagation();
-      const card = this.closest('.social-card');
-      const isInstagram = card.querySelector('.fa-instagram');
-      if(isInstagram) alert('Redirecting to Instagram profile...');
-      else alert('Redirecting to YouTube channel...');
+    // Close cart sidebar
+    closeCart.addEventListener('click', () => {
+        cartSidebar.classList.remove('active');
+        cartOverlay.classList.remove('active');
     });
-  });
+
+    cartOverlay.addEventListener('click', () => {
+        cartSidebar.classList.remove('active');
+        cartOverlay.classList.remove('active');
+    });
+
+    // Add to cart
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const productCard = button.closest('.product-card');
+            const productTitle = productCard.querySelector('h3').textContent;
+            const productPrice = parseFloat(productCard.querySelector('.product-price').textContent.replace('₹',''));
+            const productImage = productCard.querySelector('img').src;
+            const quantity = parseInt(productCard.querySelector('.quantity').textContent);
+
+            const existingIndex = cart.findIndex(item => item.title === productTitle);
+            if(existingIndex !== -1){
+                cart[existingIndex].quantity += quantity;
+            } else {
+                cart.push({title: productTitle, price: productPrice, image: productImage, quantity: quantity});
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+
+            button.textContent = 'Added!';
+            setTimeout(() => button.textContent = 'Add to Cart', 1500);
+        });
+    });
+
+function updateCart() {
+    cartItemsContainer.innerHTML = '';
+    let total = 0;
+    cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        const div = document.createElement('div');
+        div.classList.add('cart-item');
+        div.innerHTML = `
+            <img src="${item.image}" alt="${item.title}">
+            <div class="cart-item-details">
+                <h4>${item.title}</h4>
+                <p>₹${item.price} x ${item.quantity}</p>
+            </div>
+            <button class="remove-item" data-index="${index}">&times;</button>
+            <button class="cart-buy-now" data-index="${index}"  >Buy Now</button>
+        `;
+        cartItemsContainer.appendChild(div);
+    });
+    totalAmount.textContent = `₹${total}`;
+
+    const totalItems = cart.reduce((sum,item) => sum+item.quantity,0);
+    cartCount.textContent = totalItems;
+    cartCount.classList.add('bump');
+    setTimeout(() => cartCount.classList.remove('bump'), 300);
+
+    // Remove item from cart
+    document.querySelectorAll('.remove-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const idx = parseInt(btn.dataset.index);
+            cart.splice(idx,1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+        });
+    });
+
+    // Buy Now for cart items
+    document.querySelectorAll('.cart-buy-now').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const idx = parseInt(btn.dataset.index);
+            const item = cart[idx];
+
+            // Create temporary cart just like product Buy Now
+            const tempCart = [{ 
+                title: item.title, 
+                price: item.price, 
+                image: item.image, 
+                quantity: item.quantity 
+            }];
+            localStorage.setItem('tempCart', JSON.stringify(tempCart));
+
+            if(confirm(`Buy ${item.quantity} ${item.title} for ₹${item.price * item.quantity}?`)) {
+                // Remove this item from main cart
+                cart.splice(idx, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCart(); // refresh cart UI
+
+                // Store tempCart in main cart for checkout
+                localStorage.setItem('cart', JSON.stringify(tempCart));
+
+                // Show success and redirect
+                alert('Thank you for your purchase! Redirecting to checkout...');
+                window.location.href = 'checkout.html';
+            }
+        });
+    });
+}
+
+
+    // -----------------------------
+    // Checkout Button
+    // -----------------------------
+   checkoutBtn.addEventListener('click', () => {
+    if(cart.length === 0){
+        alert('Your cart is empty!');
+        return;
+    }
+
+    // Store all cart items for checkout in tempCart
+    const tempCart = cart.map(item => ({
+        title: item.title,
+        price: item.price,
+        image: item.image,
+        quantity: item.quantity
+    }));
+
+    localStorage.setItem('tempCart', JSON.stringify(tempCart));
+
+    // Calculate total
+    let total = tempCart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+    // Show confirmation
+    //alert(`Redirecting to checkout with total ₹${total} for your selected items...`);
+
+    // Redirect to checkout page
+    window.location.href = 'checkout.html';
 });
 </script>
+
+
+
 </body>
-</html>

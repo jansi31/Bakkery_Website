@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Us | CraveCo</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
+  <link rel="stylesheet" href="css/about.css">
   <style>
     
     /* ------------ Root + Reset ------------ */
@@ -491,9 +491,9 @@
     <!-- Links in center -->
     <div class="nav-links">
       <ul>
-        <li><a href="craveco.html">Home</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="contact .html">Contact</a></li>
         <li><a href="#cart" class="cart-icon"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a></li>
 
@@ -564,7 +564,7 @@
           <p>From birthdays to tiny wins — our cakes and cookies add sweetness to every moment. Custom designs available on request.</p>
         </div>
         <figure class="feature-img">
-          <img src="img/certificate.jpg" alt="Quality Promise">
+          <img src="img/cakes.jpg" alt="Quality Promise" height="200px" width="200px">
         </figure>
       </article>
     </div>
@@ -699,7 +699,20 @@
       <a href="#product"><button class="btn">Explore Products</button></a>
     </div>
   </section>
-
+<div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2 style="color: black;">Your Cart</h2>
+            <button class="close-cart">&times;</button>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="cart-total">
+            <p style="color: black;">Total: <span class="total-amount">₹0</span></p>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
   <!-- ============== YOUR FOOTER (UNCHANGED) ============== -->
   <footer>
         <div class="footer-container">
@@ -713,10 +726,10 @@
             <div class="footer-links">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="craveco.html">Home</a></li>
-                    <li><a href="#product">Products</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="product.html">Products</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact .html">Contact</a></li>
                 </ul>
             </div>
 
@@ -744,11 +757,11 @@
             <div class="footer-social">
                 <h3>Follow Us</h3>
                 <div class="social-icons">
-                    <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
-                    <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/YourPage" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/YourProfile" class="instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/YourProfile" class="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/@YourChannel" class="youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/in/YourProfile" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
         </div>
@@ -800,7 +813,157 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     if (cartCount) cartCount.textContent = totalItems;
 });
+const cartIcon = document.querySelector('.cart-icon');
+    const cartSidebar = document.getElementById('cartSidebar');
+    const cartOverlay = document.getElementById('cartOverlay');
+    const closeCart = document.querySelector('.close-cart');
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const cartItemsContainer = document.querySelector('.cart-items');
+    const totalAmount = document.querySelector('.total-amount');
+    const cartCount = document.querySelector('.cart-count');
+    const checkoutBtn = document.querySelector('.checkout-btn');
 
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    updateCart();
+
+    // Open cart sidebar
+    cartIcon.addEventListener('click', (e) => {
+        e.preventDefault();
+        cartSidebar.classList.add('active');
+        cartOverlay.classList.add('active');
+    });
+
+    // Close cart sidebar
+    closeCart.addEventListener('click', () => {
+        cartSidebar.classList.remove('active');
+        cartOverlay.classList.remove('active');
+    });
+
+    cartOverlay.addEventListener('click', () => {
+        cartSidebar.classList.remove('active');
+        cartOverlay.classList.remove('active');
+    });
+
+    // Add to cart
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const productCard = button.closest('.product-card');
+            const productTitle = productCard.querySelector('h3').textContent;
+            const productPrice = parseFloat(productCard.querySelector('.product-price').textContent.replace('₹',''));
+            const productImage = productCard.querySelector('img').src;
+            const quantity = parseInt(productCard.querySelector('.quantity').textContent);
+
+            const existingIndex = cart.findIndex(item => item.title === productTitle);
+            if(existingIndex !== -1){
+                cart[existingIndex].quantity += quantity;
+            } else {
+                cart.push({title: productTitle, price: productPrice, image: productImage, quantity: quantity});
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+
+            button.textContent = 'Added!';
+            setTimeout(() => button.textContent = 'Add to Cart', 1500);
+        });
+    });
+
+function updateCart() {
+    cartItemsContainer.innerHTML = '';
+    let total = 0;
+    cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        const div = document.createElement('div');
+        div.classList.add('cart-item');
+        div.innerHTML = `
+            <img src="${item.image}" alt="${item.title}">
+            <div class="cart-item-details">
+                <h4 style="color:black;">${item.title}</h4>
+                <p>₹${item.price} x ${item.quantity}</p>
+            </div>
+            <button class="remove-item" data-index="${index}">&times;</button>
+            <button class="cart-buy-now" data-index="${index}">Buy Now</button>
+        `;
+        cartItemsContainer.appendChild(div);
+    });
+    totalAmount.textContent = `₹${total}`;
+
+    const totalItems = cart.reduce((sum,item) => sum+item.quantity,0);
+    cartCount.textContent = totalItems;
+    cartCount.classList.add('bump');
+    setTimeout(() => cartCount.classList.remove('bump'), 300);
+
+    // Remove item from cart
+    document.querySelectorAll('.remove-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const idx = parseInt(btn.dataset.index);
+            cart.splice(idx,1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+        });
+    });
+
+    // Buy Now for cart items
+    document.querySelectorAll('.cart-buy-now').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const idx = parseInt(btn.dataset.index);
+            const item = cart[idx];
+
+            // Create temporary cart just like product Buy Now
+            const tempCart = [{ 
+                title: item.title, 
+                price: item.price, 
+                image: item.image, 
+                quantity: item.quantity 
+            }];
+            localStorage.setItem('tempCart', JSON.stringify(tempCart));
+
+            if(confirm(`Buy ${item.quantity} ${item.title} for ₹${item.price * item.quantity}?`)) {
+                // Remove this item from main cart
+                cart.splice(idx, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCart(); // refresh cart UI
+
+                // Store tempCart in main cart for checkout
+                localStorage.setItem('cart', JSON.stringify(tempCart));
+
+                // Show success and redirect
+                alert('Thank you for your purchase! Redirecting to checkout...');
+                window.location.href = 'checkout.html';
+            }
+        });
+    });
+}
+
+
+    // -----------------------------
+    // Checkout Button
+    // -----------------------------
+   checkoutBtn.addEventListener('click', () => {
+    if(cart.length === 0){
+        alert('Your cart is empty!');
+        return;
+    }
+
+    // Store all cart items for checkout in tempCart
+    const tempCart = cart.map(item => ({
+        title: item.title,
+        price: item.price,
+        image: item.image,
+        quantity: item.quantity
+    }));
+
+    localStorage.setItem('tempCart', JSON.stringify(tempCart));
+
+    // Calculate total
+    let total = tempCart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+    // Show confirmation
+    //alert(`Redirecting to checkout with total ₹${total} for your selected items...`);
+
+    // Redirect to checkout page
+    window.location.href = 'checkout.html';
+});
   </script>
 </body>
 </html>

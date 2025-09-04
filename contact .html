@@ -1,143 +1,409 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CraveCo - Contact Us</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="contact.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CraveCo - Contact Us</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/contact.css">
+<style>
+/* Success Message with Glow & Sparkle */
+.success-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+  color: #fff;
+  padding: 40px 80px;
+  border-radius: 25px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  animation: none;
+  text-shadow: 0 0 15px #fff, 0 0 30px #ff6ec7, 0 0 45px #ff3f81;
+}
+
+/* Bounce Animation */
+@keyframes bounceIn {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+  80% { transform: translate(-50%, -50%) scale(0.95); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Falling sweets & confetti */
+.falling-sweets, .confetti {
+  position: fixed;
+  top: -50px;
+  pointer-events: none;
+  z-index: 9998;
+  animation-name: fall;
+  animation-timing-function: linear;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-50px) rotate(0deg); opacity:1; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity:0; }
+}
+
+/* Confetti colors */
+.confetti {
+  font-size: 18px;
+  animation-duration: 3s;
+}
+
+</style>
 </head>
 <body>
-    <nav>
-        <!-- Logo on left -->
-        <div class="logo">
-            <img src="img/craveco-removebg-preview.png" alt="CraveCo Logo" width="80" height="80">
+
+<nav>
+    <div class="logo">
+        <img src="img/craveco-removebg-preview.png" alt="CraveCo Logo" width="80" height="80">
+    </div>
+    <div class="nav-links">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#cart" class="cart-icon"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="herosec">
+   <h2>Contact Us</h2>
+</div>
+
+<div class="contact">
+    <div class="con">
+        <h2>Contact Info</h2>
+        <p><i class="fas fa-map-marker-alt"></i> 1/46, Meyyapuram<br>K.Pallivasal, Thirumayam(tk)<br>Pudukkottai(dt), 622503</p>
+        <p><i class="fas fa-envelope"></i> craveco12@gmail.com</p>
+        <p><i class="fas fa-phone-alt"></i> 9345595943</p>
+        
+        <h2>Business Hours</h2>
+        <p><i class="fas fa-clock"></i> Monday-Friday: 9:00 AM - 8:00 PM</p>
+        <p><i class="fas fa-clock"></i> Saturday-Sunday: 10:00 AM - 6:00 PM</p>
+    </div>
+
+    <div class="co">
+        <h2>Get in Touch</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <input type="tel" placeholder="Your Phone Number" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</div>
+
+<div class="map-section">
+    <h2>Find Us Here</h2>
+    <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125333.39411002515!2d78.71201372251613!3d10.378562400000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00d60369dfa3a1%3A0x6cae608cc99cdf6c!2sPudukkottai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1719312345678!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</div>
+<div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart">&times;</button>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="cart-total">
+            <p>Total: <span class="total-amount">₹0</span></p>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
+<footer>
+    <div class="footer-container">
+        <div class="footer-logo">
+            <img src="img/craveco-removebg-preview.png" alt="CraveCo Logo" width="100">
+            <p>Baking Happiness, One Bite at a Time 💛</p>
         </div>
 
-        <!-- Links in center -->
-        <div class="nav-links">
+        <div class="footer-links">
+            <h3>Quick Links</h3>
             <ul>
-                <li><a href="craveco.html">Home</a></li>
-                <li><a href="#">Products</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#product">Products</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#cart" class="cart-icon"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a></li>
-
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
-    </nav>
-    
-</video>
 
-    
-    <!-- hero section-->
-    <div class="herosec">
-       
-        <h2>Contact Us</h2>
-    </div>
-    
-    <!-- Contact Section -->
-    <div class="contact">
-        <!-- Left Side -->
-        <div class="con">
-            <h2>Contact Info</h2>
-            <p><i class="fas fa-map-marker-alt"></i> 1/46, Meyyapuram<br>K.Pallivasal, Thirumayam(tk)<br>Pudukkottai(dt), 622503</p>
-            <p><i class="fas fa-envelope"></i> craveco12@gmail.com</p>
-            <p><i class="fas fa-phone-alt"></i> 9345595943</p>
-            
-            <h2>Business Hours</h2>
-            <p><i class="fas fa-clock"></i> Monday-Friday: 9:00 AM - 8:00 PM</p>
-            <p><i class="fas fa-clock"></i> Saturday-Sunday: 10:00 AM - 6:00 PM</p>
+        <div class="footer-policies">
+            <h3>Our Policies</h3>
+            <ul>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="refund.html">Refund Policy</a></li>
+                <li><a href="terms.html">Terms & Conditions</a></li>
+                <li><a href="shipping.html">Shipping Policy</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
         </div>
 
-        <!-- Right Side -->
-        <div class="co">
-            <h2>Get in Touch</h2>
-            <form>
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <input type="tel" placeholder="Your Phone Number" required>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
+        <div class="footer-contact">
+            <h3>Contact Us</h3>
+            <p><i class="fas fa-map-marker-alt"></i> 123 Sweet Street, Chennai, India</p>
+            <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+            <p><i class="fas fa-envelope"></i> support@craveco.com</p>
+        </div>
+
+        <div class="footer-social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/YourPage" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/YourProfile" class="instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/YourProfile" class="twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/@YourChannel" class="youtube"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/YourProfile" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+            </div>
         </div>
     </div>
-    
-    <!-- Map Section -->
-    <div class="map-section">
-        <h2>Find Us Here</h2>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125333.39411002515!2d78.71201372251613!3d10.378562400000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00d60369dfa3a1%3A0x6cae608cc99cdf6c!2sPudukkottai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1719312345678!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
-        </div>
+    <div class="footer-bottom">
+        <p>© 2025 CraveCo. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms</a></p>
     </div>
-    
-    <!-- Footer Section -->
-    <footer>
-        <div class="footer-container">
-            <!-- Left: Logo & Tagline -->
-            <div class="footer-logo">
-                <img src="img/craveco-removebg-preview.png" alt="CraveCo Logo" width="100">
-                <p>Baking Happiness, One Bite at a Time 💛</p>
-            </div>
+</footer>
 
-            <!-- Middle: Quick Links -->
-            <div class="footer-links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="craveco.html">Home</a></li>
-                    <li><a href="#product">Products</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
+<!-- Success Message -->
+<div class="success-message" id="successMessage">Message Sent Successfully! </div>
 
-            <!-- Extra Policies -->
-            <div class="footer-policies">
-                <h3>Our Policies</h3>
-                <ul>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="refund.html">Refund Policy</a></li>
-                    <li><a href="terms.html">Terms & Conditions</a></li>
-                    <li><a href="shipping.html">Shipping Policy</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                </ul>
-            </div>
-
-            <!-- Right: Contact Info -->
-            <div class="footer-contact">
-                <h3>Contact Us</h3>
-                <p><i class="fas fa-map-marker-alt"></i> 123 Sweet Street, Chennai, India</p>
-                <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
-                <p><i class="fas fa-envelope"></i> support@craveco.com</p>
-            </div>
-
-            <!-- Social Media -->
-            <div class="footer-social">
-                <h3>Follow Us</h3>
-                <div class="social-icons">
-                    <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
-                    <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bottom: Copy -->
-        <div class="footer-bottom">
-            <p>© 2025 CraveCo. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms</a></p>
-        </div>
-    </footer>
-    <script>
-        // Show cart count on all pages
+<script>
 document.addEventListener('DOMContentLoaded', () => {
-    const cartCount = document.querySelector('.cart-count');
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    if (cartCount) cartCount.textContent = totalItems;
-});
+    const form = document.querySelector('.contact form');
+    const successMessage = document.getElementById('successMessage');
+    const sweets = ['🧁','🍩','🍪','🍫'];
+    const confettiColors = ['#ff3f81','#ffec3f','#3fffac','#3fafff','#ff8c3f'];
 
-    </script>
+    function createFallingSweet() {
+        const sweet = document.createElement('div');
+        sweet.textContent = sweets[Math.floor(Math.random() * sweets.length)];
+        sweet.className = 'falling-sweets';
+        sweet.style.left = Math.random() * window.innerWidth + 'px';
+        sweet.style.fontSize = (25 + Math.random() * 30) + 'px';
+        sweet.style.animationDuration = (3 + Math.random() * 2) + 's';
+        document.body.appendChild(sweet);
+        setTimeout(() => sweet.remove(), 4000);
+    }
+
+    function createConfetti() {
+        const conf = document.createElement('div');
+        conf.textContent = '✨';
+        conf.className = 'confetti';
+        conf.style.color = confettiColors[Math.floor(Math.random()*confettiColors.length)];
+        conf.style.left = Math.random()*window.innerWidth + 'px';
+        conf.style.fontSize = (10 + Math.random()*20) + 'px';
+        conf.style.animationDuration = (2 + Math.random()*2) + 's';
+        document.body.appendChild(conf);
+        setTimeout(() => conf.remove(), 4000);
+    }
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = form.querySelector('input[type="text"]').value;
+        const email = form.querySelector('input[type="email"]').value;
+        const phone = form.querySelector('input[type="tel"]').value;
+        const message = form.querySelector('textarea').value;
+
+        try {
+            const res = await fetch("http://localhost:5000/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, phone, message })
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                form.reset();
+
+                // Show success message
+                successMessage.style.opacity = 1;
+                successMessage.style.animation = "bounceIn 1s forwards";
+                setTimeout(() => {
+                    successMessage.style.opacity = 0;
+                    successMessage.style.animation = "none";
+                }, 3000);
+
+                // Falling sweets + confetti animation
+                const sweetInterval = setInterval(createFallingSweet, 150);
+                const confettiInterval = setInterval(createConfetti, 150);
+                setTimeout(() => {
+                    clearInterval(sweetInterval);
+                    clearInterval(confettiInterval);
+                }, 2500);
+            } else {
+                alert("Failed to send message. Try again.");
+            }
+        } catch (err) {
+            console.error(err);
+            alert("Error connecting to server.");
+        }
+    });
+});
+const cartIcon = document.querySelector('.cart-icon');
+    const cartSidebar = document.getElementById('cartSidebar');
+    const cartOverlay = document.getElementById('cartOverlay');
+    const closeCart = document.querySelector('.close-cart');
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const cartItemsContainer = document.querySelector('.cart-items');
+    const totalAmount = document.querySelector('.total-amount');
+    const cartCount = document.querySelector('.cart-count');
+    const checkoutBtn = document.querySelector('.checkout-btn');
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    updateCart();
+
+    // Open cart sidebar
+    cartIcon.addEventListener('click', (e) => {
+        e.preventDefault();
+        cartSidebar.classList.add('active');
+        cartOverlay.classList.add('active');
+    });
+
+    // Close cart sidebar
+    closeCart.addEventListener('click', () => {
+        cartSidebar.classList.remove('active');
+        cartOverlay.classList.remove('active');
+    });
+
+    cartOverlay.addEventListener('click', () => {
+        cartSidebar.classList.remove('active');
+        cartOverlay.classList.remove('active');
+    });
+
+    // Add to cart
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const productCard = button.closest('.product-card');
+            const productTitle = productCard.querySelector('h3').textContent;
+            const productPrice = parseFloat(productCard.querySelector('.product-price').textContent.replace('₹',''));
+            const productImage = productCard.querySelector('img').src;
+            const quantity = parseInt(productCard.querySelector('.quantity').textContent);
+
+            const existingIndex = cart.findIndex(item => item.title === productTitle);
+            if(existingIndex !== -1){
+                cart[existingIndex].quantity += quantity;
+            } else {
+                cart.push({title: productTitle, price: productPrice, image: productImage, quantity: quantity});
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+
+            button.textContent = 'Added!';
+            setTimeout(() => button.textContent = 'Add to Cart', 1500);
+        });
+    });
+
+function updateCart() {
+    cartItemsContainer.innerHTML = '';
+    let total = 0;
+    cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        const div = document.createElement('div');
+        div.classList.add('cart-item');
+        div.innerHTML = `
+            <img src="${item.image}" alt="${item.title}">
+            <div class="cart-item-details">
+                <h4>${item.title}</h4>
+                <p>₹${item.price} x ${item.quantity}</p>
+            </div>
+            <button class="remove-item" data-index="${index}">&times;</button>
+            <button class="cart-buy-now" data-index="${index}">Buy Now</button>
+        `;
+        cartItemsContainer.appendChild(div);
+    });
+    totalAmount.textContent = `₹${total}`;
+
+    const totalItems = cart.reduce((sum,item) => sum+item.quantity,0);
+    cartCount.textContent = totalItems;
+    cartCount.classList.add('bump');
+    setTimeout(() => cartCount.classList.remove('bump'), 300);
+
+    // Remove item from cart
+    document.querySelectorAll('.remove-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const idx = parseInt(btn.dataset.index);
+            cart.splice(idx,1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+        });
+    });
+
+    // Buy Now for cart items
+    document.querySelectorAll('.cart-buy-now').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const idx = parseInt(btn.dataset.index);
+            const item = cart[idx];
+
+            // Create temporary cart just like product Buy Now
+            const tempCart = [{ 
+                title: item.title, 
+                price: item.price, 
+                image: item.image, 
+                quantity: item.quantity 
+            }];
+            localStorage.setItem('tempCart', JSON.stringify(tempCart));
+
+            if(confirm(`Buy ${item.quantity} ${item.title} for ₹${item.price * item.quantity}?`)) {
+                // Remove this item from main cart
+                cart.splice(idx, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCart(); // refresh cart UI
+
+                // Store tempCart in main cart for checkout
+                localStorage.setItem('cart', JSON.stringify(tempCart));
+
+                // Show success and redirect
+                alert('Thank you for your purchase! Redirecting to checkout...');
+                window.location.href = 'checkout.html';
+            }
+        });
+    });
+}
+
+
+    // -----------------------------
+    // Checkout Button
+    // -----------------------------
+   checkoutBtn.addEventListener('click', () => {
+    if(cart.length === 0){
+        alert('Your cart is empty!');
+        return;
+    }
+
+    // Store all cart items for checkout in tempCart
+    const tempCart = cart.map(item => ({
+        title: item.title,
+        price: item.price,
+        image: item.image,
+        quantity: item.quantity
+    }));
+
+    localStorage.setItem('tempCart', JSON.stringify(tempCart));
+
+    // Calculate total
+    let total = tempCart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+    // Show confirmation
+    //alert(`Redirecting to checkout with total ₹${total} for your selected items...`);
+
+    // Redirect to checkout page
+    window.location.href = 'checkout.html';
+});
+</script>
+
 </body>
 </html>
